@@ -5,7 +5,7 @@
       {
         "name": "testmachines1",
         "instance_type": "t2.medium",
-        "ami": "ami-09cb80360d5069de4",
+        "ami": "ami-0e449927258d45bc4",
         "availability_zone": "us-east-1d",
         "subnet_ids": "subnet-0b54a16c1ceef2d12",
         "volume_size": 50,
