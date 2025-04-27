@@ -4,10 +4,6 @@ variable "region" {
   default     = "us-east-1"
 }
 
-variable "provider_tags" {
-  description = "default tags for provider"
-  type        = map(string)
-}
 
 #instance variables
 variable "ec2_instance_configuration" {
