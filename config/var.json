@@ -1,44 +1,42 @@
 {
-    "sourceset": "arshad_test",
-    "category": "prod",
-    "environment": "prod",
-    "aws_configurations": {
-        "account_id": "021817787677",
-        "aws_region": "us-east-1",
-        "assumed_role": "nct-product-iac-cicd-role"
-    },
-   
-    },
-    "ec2_instance_configuration": {
-        "ec2_instance_details": [
-            {
-                "name": "NCAOKTAPROD03",
-                "instance_type": "m5.large",
-                "ami": "ami-08347c6d543218ae3",
-                "availability_zone": "us-east-1a",
-                "subnet_ids": "subnet-0b54a16c1ceef2d12",
-                "volume_size": 100,
-                "volume_type": "gp3",
-                "delete_on_termination": false,
-                "disable_api_termination": true,
-                "instance_initiated_shutdown_behavior": "stop",
-                "monitoring": true,
-                "associate_public_ip_address": false,
-                "encrypted": true,
-                "key_name": "key1",
-                "iam_instance_profile": "SSMManagedInstanceCWagent-profile",
-                "vpc_security_group_ids": [
-                    "sg-0f39208f971e508f5"
-                ],
-                "tags": {
-                    "Name": "NCAOKTAPROD03",
-                    "aws-backup": "aws-backup-prod14d",
-                    "Product": "Okta",
-                    "Owner": "Dan Spira",
-                    "type": "standalone",
-                    "Preserve": "True"
-                }
-            }
-        ]
-    }
+  "sourceset": "arshad_test",
+  "category": "prod",
+  "environment": "prod",
+  "aws_configurations": {
+    "account_id": "021817787677",
+    "aws_region": "us-east-1",
+    "assumed_role": "nct-product-iac-cicd-role"
+  },
+  "ec2_instance_configuration": {
+    "ec2_instance_details": [
+      {
+        "name": "NCAOKTAPROD03",
+        "instance_type": "m5.large",
+        "ami": "ami-08347c6d543218ae3",
+        "availability_zone": "us-east-1a",
+        "subnet_ids": "subnet-0b54a16c1ceef2d12",
+        "volume_size": 100,
+        "volume_type": "gp3",
+        "delete_on_termination": false,
+        "disable_api_termination": true,
+        "instance_initiated_shutdown_behavior": "stop",
+        "monitoring": true,
+        "associate_public_ip_address": false,
+        "encrypted": true,
+        "key_name": "key1",
+        "iam_instance_profile": "SSMManagedInstanceCWagent-profile",
+        "vpc_security_group_ids": [
+          "sg-0f39208f971e508f5"
+        ],
+        "tags": {
+          "Name": "NCAOKTAPROD03",
+          "aws-backup": "aws-backup-prod14d",
+          "Product": "Okta",
+          "Owner": "Dan Spira",
+          "type": "standalone",
+          "Preserve": "True"
+        }
+      }
+    ]
+  }
 }
