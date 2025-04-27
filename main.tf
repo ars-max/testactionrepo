@@ -12,7 +12,6 @@ module "ec2-instances" {
   availability_zone                    = each.value.availability_zone
   subnet_ids                           = each.value.subnet_ids
   vpc_security_group_ids               = each.value.vpc_security_group_ids
-  iam_instance_profile                 = each.value.iam_instance_profile
   delete_on_termination                = each.value.delete_on_termination
   disable_api_termination              = each.value.disable_api_termination
   instance_initiated_shutdown_behavior = each.value.instance_initiated_shutdown_behavior
