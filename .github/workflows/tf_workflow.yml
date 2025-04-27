@@ -11,6 +11,7 @@ on:
         description: 'Choose Terraform Option'
         required: true
         type: choice
+        default : plan
         options:
           - apply
           - plan
@@ -24,7 +25,7 @@ on:
 env:
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-  AWS_REGION: 'ap-south-1' # Replace with your desired AWS region
+  AWS_REGION: 'us-east-1' # Replace with your desired AWS region
 
 jobs:
   terraform_actions:
@@ -45,7 +46,7 @@ jobs:
       - name: Terraform Plan
         if: ${{ github.event.inputs.terraform_option == 'plan' }}
         id: plan
-        run: terraform plan -no-color
+        run: terraform plan -no-color -var-file="config/var.json"
         continue-on-error: true
 
       - name: Terraform Apply
