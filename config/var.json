@@ -3,10 +3,10 @@
   "ec2_instance_configuration": {
     "ec2_instance_details": [
       {
-        "name": "NCAOKTAPROD03",
-        "instance_type": "m5.large",
+        "name": "testmachines1",
+        "instance_type": "t2.medium",
         "ami": "ami-08347c6d543218ae3",
-        "availability_zone": "us-east-1a",
+        "availability_zone": "us-east-1d",
         "subnet_ids": "subnet-0b54a16c1ceef2d12",
         "volume_size": 100,
         "volume_type": "gp3",
@@ -19,7 +19,7 @@
         "key_name": "key1",
         "iam_instance_profile": "SSMManagedInstanceCWagent-profile",
         "vpc_security_group_ids": [
-          "sg-0f39208f971e508f5"
+          "sg-091f8a71ec19c447b"
         ],
         "tags": {
           "Name": "NCAOKTAPROD03",
