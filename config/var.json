@@ -7,13 +7,7 @@
         "aws_region": "us-east-1",
         "assumed_role": "nct-product-iac-cicd-role"
     },
-    "provider_tags": {
-        "Bu": "arshad Tech",
-        "Cost Centre": "995180794",
-        "technical_contact": "arshad",
-        "Company": "nca",
-        "managed_resource": "https://github.com/ars-max/testactionrepo",
-        "Environment": "prod"
+   
     },
     "ec2_instance_configuration": {
         "ec2_instance_details": [
