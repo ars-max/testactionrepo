@@ -1,0 +1,123 @@
+name: Manually run github actions with inputs
+
+on:
+  workflow_dispatch:
+    inputs:
+      task:
+        type: choice
+        description: What terraform task to run (no apply)
+        required: true
+        options:
+          - tfPlan
+          - tfShowState
+          - tfDrift
+          - tfValidate
+          - tfFmtCheck
+          - tfApply
+      
+      accountCategory:
+        type: choice
+        description: Choose account category to use (ie. non-prod)
+        default: non-prod
+        required: false
+        options:
+          - all
+          - non-prod
+          - pre-prod
+          - prod
+      account:
+        type: choice
+        description: Choose the account to use
+        required: true
+        default: all
+        options: # TODO: add your bu-"account names" here eg. nca-ncgtdevalfheim
+          - all
+          - pluralsight-test-account
+permissions:
+  id-token: write
+  contents: read
+name: Set Target Account
+
+on:
+  workflow_dispatch:
+    inputs:
+      account:
+        description: 'Account input'
+        required: true
+
+jobs:
+  authenticate-aws:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Configure AWS Credentials
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: "us-east-1"
+        run: |
+          echo "Configuring AWS CLI..."
+          aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
+          aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+          aws configure set region $AWS_REGION
+
+      - name: Verify AWS Configuration
+        run: aws sts get-caller-identity
+  # Manual approvals for protected environments
+  manual-approval-prod:
+    name: manual approval for prod tfApply (main/master only)
+    environment: 'prod' # prod environment requires approval, and has branch protection for main/master
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "tfApply approved for prod"
+    if: ${{ github.event.inputs.task == 'tfApply' && github.event.inputs.accountCategory == 'prod' }}
+
+  manual-approval-pre-prod:
+    name: manual approval for pre-prod tfApply (main/master only)
+    environment: 'pre-prod' # pre-prod environment requires approval, and has branch protection for main/master
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "tfApply approved for pre-prod"
+    if: ${{ github.event.inputs.task == 'tfApply' && github.event.inputs.accountCategory == 'pre-prod' }}
+
+  tf-task:
+    name: 'run ${{ github.event.inputs.task }}'
+    needs: set-target-account
+    uses: 'newscorp-ghfb/ncgt-iac-template/.github/workflows/terraform-task.yml@20250302'
+    with:
+      task: clean ${{ github.event.inputs.task }}
+      businessUnit: ${{ github.event.inputs.businessUnit }}
+      accountCategory: ${{ github.event.inputs.accountCategory }}
+      account: ${{ needs.set-target-account.outputs.target_account }}
+    secrets: inherit
+    if: ${{ github.event.inputs.task != 'tfApply' || (github.event.inputs.task == 'tfApply' && github.event.inputs.accountCategory == 'non-prod') }}
+
+  tf-apply-pre-prod:
+    name: 'run terraform apply for pre-prod'
+    uses: 'newscorp-ghfb/ncgt-iac-template/.github/workflows/terraform-task.yml@20250302'
+    needs:
+      - set-target-account
+      - manual-approval-pre-prod
+    with:
+      task: clean ${{ github.event.inputs.task }}
+      businessUnit: ${{ github.event.inputs.businessUnit }}
+      accountCategory: ${{ github.event.inputs.accountCategory }}
+      account: ${{ needs.set-target-account.outputs.target_account }}
+    secrets: inherit
+    if: ${{ github.event.inputs.task == 'tfApply' && github.event.inputs.accountCategory == 'pre-prod' }}
+
+  tf-apply-prod:
+    name: 'run terraform apply for prod'
+    uses: 'newscorp-ghfb/ncgt-iac-template/.github/workflows/terraform-task.yml@20250302'
+    needs:
+      - set-target-account
+      - manual-approval-prod
+    with:
+      task: clean ${{ github.event.inputs.task }}
+      businessUnit: ${{ github.event.inputs.businessUnit }}
+      accountCategory: ${{ github.event.inputs.accountCategory }}
+      account: ${{ needs.set-target-account.outputs.target_account }}
+    secrets: inherit
+    if: ${{ github.event.inputs.task == 'tfApply' && github.event.inputs.accountCategory == 'prod' }}
