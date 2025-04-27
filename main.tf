@@ -21,7 +21,4 @@ module "ec2-instances" {
   encrypted                            = each.value.encrypted
   key_name                             = each.value.key_name
 
-  tags = merge(var.provider_tags, each.value.tags, {
-    Name = each.key
-  })
 }
