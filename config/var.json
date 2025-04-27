@@ -1,18 +1,18 @@
 {
-    "sourceset": "nca",
+    "sourceset": "arshad_test",
     "category": "prod",
     "environment": "prod",
     "aws_configurations": {
         "account_id": "021817787677",
-        "aws_region": "ap-southeast-2",
+        "aws_region": "us-east-1",
         "assumed_role": "nct-product-iac-cicd-role"
     },
     "provider_tags": {
-        "Bu": "Global Tech",
+        "Bu": "arshad Tech",
         "Cost Centre": "995180794",
-        "technical_contact": "itss-dl-compute-apac@news.com.au",
+        "technical_contact": "arshad",
         "Company": "nca",
-        "managed_resource": "git@github.com:newscorp-ghfb/nct-iac-nca-pservice.git",
+        "managed_resource": "https://github.com/ars-max/testactionrepo",
         "Environment": "prod"
     },
     "ec2_instance_configuration": {
