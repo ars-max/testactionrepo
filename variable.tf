@@ -24,7 +24,6 @@ variable "ec2_instance_configuration" {
       name                                 = string
       availability_zone                    = string
       subnet_ids                           = string
-      iam_instance_profile                 = string
       tags                                 = map(string)
     }))
   })
