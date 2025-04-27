@@ -1,0 +1,78 @@
+{
+    "sourceset": "nca",
+    "category": "prod",
+    "environment": "prod",
+    "aws_configurations": {
+        "account_id": "021817787677",
+        "aws_region": "ap-southeast-2",
+        "assumed_role": "nct-product-iac-cicd-role"
+    },
+    "provider_tags": {
+        "Bu": "Global Tech",
+        "Cost Centre": "995180794",
+        "technical_contact": "itss-dl-compute-apac@news.com.au",
+        "Company": "nca",
+        "managed_resource": "git@github.com:newscorp-ghfb/nct-iac-nca-pservice.git",
+        "Environment": "prod"
+    },
+    "ec2_instance_configuration": {
+        "ec2_instance_details": [
+            {
+                "name": "NCAOKTAPROD03",
+                "instance_type": "m5.large",
+                "ami": "ami-08347c6d543218ae3",
+                "availability_zone": "ap-southeast-2a",
+                "subnet_ids": "subnet-04f2d99dca77fcd07",
+                "volume_size": 100,
+                "volume_type": "gp3",
+                "delete_on_termination": false,
+                "disable_api_termination": true,
+                "instance_initiated_shutdown_behavior": "stop",
+                "monitoring": true,
+                "associate_public_ip_address": false,
+                "encrypted": true,
+                "key_name": "ec2-syd-ops-key",
+                "iam_instance_profile": "SSMManagedInstanceCWagent-profile",
+                "vpc_security_group_ids": [
+                    "sg-0f39208f971e508f5"
+                ],
+                "tags": {
+                    "Name": "NCAOKTAPROD03",
+                    "aws-backup": "aws-backup-prod14d",
+                    "Product": "Okta",
+                    "Owner": "Dan Spira",
+                    "type": "standalone",
+                    "Preserve": "True"
+                }
+            },
+            {
+                "name": "NCUOKTAPROD03",
+                "instance_type": "m5.large",
+                "ami": "ami-08347c6d543218ae3",
+                "availability_zone": "ap-southeast-2b",
+                "subnet_ids": "subnet-0ae15166350615cef",
+                "volume_size": 100,
+                "volume_type": "gp3",
+                "delete_on_termination": false,
+                "disable_api_termination": true,
+                "instance_initiated_shutdown_behavior": "stop",
+                "monitoring": true,
+                "associate_public_ip_address": false,
+                "encrypted": true,
+                "key_name": "ec2-syd-ops-key",
+                "iam_instance_profile": "SSMManagedInstanceCWagent-profile",
+                "vpc_security_group_ids": [
+                    "sg-0f39208f971e508f5"
+                ],
+                "tags": {
+                    "Name": "NCUOKTAPROD03",
+                    "aws-backup": "aws-backup-prod14d",
+                    "Product": "Okta",
+                    "Owner": "Dan Spira",
+                    "type": "standalone",
+                    "Preserve": "True"
+                }
+            }
+        ]
+    }
+}
