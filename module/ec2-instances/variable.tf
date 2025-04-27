@@ -69,10 +69,7 @@ variable "key_name" {
   description = "Add key pair (public and private key)"
   type        = string
 }
-variable "tags" {
-  description = "provide the different names of an instances"
-  type        = map(string)
-}
+
 
 variable "iam_instance_profile" {
   description = "IAM instance profile name"
