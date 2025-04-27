@@ -16,6 +16,6 @@ resource "aws_instance" "create_instance" {
     delete_on_termination = var.delete_on_termination
     encrypted             = var.encrypted
   }
-  tags                   = var.tags
+  
   vpc_security_group_ids = var.vpc_security_group_ids
 }
