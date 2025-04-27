@@ -71,8 +71,3 @@ variable "key_name" {
 }
 
 
-variable "iam_instance_profile" {
-  description = "IAM instance profile name"
-  type        = string
-  default     = ""
-}
