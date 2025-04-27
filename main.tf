@@ -19,5 +19,6 @@ module "ec2-instances" {
   associate_public_ip_address          = each.value.associate_public_ip_address
   encrypted                            = each.value.encrypted
   key_name                             = each.value.key_name
+  tags                                 = each.value.tags
 
 }
