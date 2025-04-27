@@ -9,7 +9,6 @@ resource "aws_instance" "create_instance" {
   monitoring                           = var.monitoring                           # Cloudwatch Monitoring
   associate_public_ip_address          = var.associate_public_ip_address
   key_name                             = var.key_name
-  iam_instance_profile                 = var.iam_instance_profile != "" ? var.iam_instance_profile : null
   root_block_device {
     volume_type           = var.volume_type
     volume_size           = var.volume_size
