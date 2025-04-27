@@ -1,12 +1,5 @@
 {
-  "sourceset": "arshad_test",
-  "category": "prod",
-  "environment": "prod",
-  "aws_configurations": {
-    "account_id": "021817787677",
-    "aws_region": "us-east-1",
-    "assumed_role": "nct-product-iac-cicd-role"
-  },
+  
   "ec2_instance_configuration": {
     "ec2_instance_details": [
       {
