@@ -1,19 +1,7 @@
 variable "region" {
   description = "The AWS region to create resources in "
   type        = string
-  default     = "ap-southeast-2"
-}
-
-#AWS account configuration
-variable "aws_configurations" {
-  description = <<-EOT
-  EOT
-
-  type = object({
-    account_id   = string
-    aws_region   = string
-    assumed_role = optional(string, "nct-iac-cicd-sa-role")
-  })
+  default     = "us-east-1"
 }
 
 variable "provider_tags" {
