@@ -44,8 +44,6 @@
                     "type": "standalone",
                     "Preserve": "True"
                 }
-            },
-            
             }
         ]
     }
