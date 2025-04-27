@@ -1,6 +1,6 @@
 #EC2 instance module
 module "ec2-instances" {
-  source   = "./modules/ec2-instances"
+  source   = "./module/ec2-instances"
   for_each = { for instance in var.ec2_instance_configuration.ec2_instance_details : instance.name => instance }
 
   name = each.key
