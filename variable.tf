@@ -31,3 +31,25 @@ variable "ec2_instance_configuration" {
     ec2_instance_details = []
   }
 }
+# Security Group variables
+variable "security_group_configuration" {
+  type = object({
+    security_group_details = list(object({
+      sg_name                = string
+      sg_description         = string
+      vpc_id                 = string
+      ingress_from_port      = number
+      ingress_to_port        = number
+      ingress_protocol       = string
+      ingress_cidr_blocks    = list(string)
+      egress_from_port       = number
+      egress_to_port         = number
+      egress_protocol        = string
+      egress_cidr_blocks     = list(string)
+      tags                   = map(string)
+    }))
+  })
+  default = {
+    security_group_details = []
+  }
+}
