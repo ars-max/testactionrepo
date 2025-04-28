@@ -30,4 +30,34 @@
       }
     ]
   }
+   "ec2_instance_configuration": {
+    "ec2_instance_details": [
+      {
+        "name": "testmachines2",
+        "instance_type": "t2.medium",
+        "ami": "ami-0e449927258d45bc4",
+        "availability_zone": "us-east-1c",
+        "subnet_ids": "subnet-0e817fdba74615adb",
+        "volume_size": 20,
+        "volume_type": "gp3",
+        "delete_on_termination": false,
+        "disable_api_termination": true,
+        "instance_initiated_shutdown_behavior": "stop",
+        "monitoring": true,
+        "associate_public_ip_address": true,
+        "encrypted": true,
+        "key_name": "key1",
+        "vpc_security_group_ids": [
+          "sg-01bbdfa8f660cd184"
+        ],
+        "tags": {
+          "Name": "testmachines2",
+          "aws-backup": "nobackup",
+          "Product": "core",
+          "Owner": "manasa",
+          "type": "standalone"
+        }
+      }
+    ]
+  }
 }
