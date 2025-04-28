@@ -1,4 +1,4 @@
-#EC2 instance module
+# EC2 instance module
 module "ec2-instances" {
   source   = "./module/ec2-instances"
   for_each = { for instance in var.ec2_instance_configuration.ec2_instance_details : instance.name => instance }
@@ -20,5 +20,26 @@ module "ec2-instances" {
   encrypted                            = each.value.encrypted
   key_name                             = each.value.key_name
   tags                                 = each.value.tags
+}
 
+# Security Group module
+module "security-groups" {
+  source = "./modules/security-group"
+  for_each = { for sg in var.security_group_configuration.security_group_details : sg.name => sg }
+
+  sg_name        = each.key
+  sg_description = each.value.sg_description
+  vpc_id         = each.value.vpc_id
+
+  ingress_from_port   = each.value.ingress_from_port
+  ingress_to_port     = each.value.ingress_to_port
+  ingress_protocol    = each.value.ingress_protocol
+  ingress_cidr_blocks = each.value.ingress_cidr_blocks
+
+  egress_from_port   = each.value.egress_from_port
+  egress_to_port     = each.value.egress_to_port
+  egress_protocol    = each.value.egress_protocol
+  egress_cidr_blocks = each.value.egress_cidr_blocks
+
+  tags = each.value.tags
 }
