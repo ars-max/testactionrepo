@@ -1,15 +1,13 @@
-
-name: Bakend Terraform Workflow
+name: Backend Terraform Workflow
 
 on:
   workflow_dispatch:
     inputs:
-     
       terraform_option:
         description: 'Choose Terraform Option'
         required: true
         type: choice
-        default : apply
+        default: apply
         options:
           - apply
           - plan
@@ -38,33 +36,28 @@ jobs:
         uses: hashicorp/setup-terraform@v3
 
       - name: Initialize Terraform
-        id: init
-        
         run: |
           cd backend_setup
           terraform init
 
       - name: Terraform Plan
         if: ${{ github.event.inputs.terraform_option == 'plan' }}
-        id: plan
-         run:|
+        run: |
           cd backend_setup
-          terraform init -reconfigure
           terraform plan -no-color
         continue-on-error: true
 
       - name: Terraform Apply
         if: ${{ github.event.inputs.terraform_option == 'apply' }}
-        id: apply
         run: |
-         cd backend_setup
-         terraform init -reconfigure
-         terraform apply -auto-approve -no-color
+          cd backend_setup
+          terraform apply -auto-approve -no-color
 
       - name: Terraform Destroy
         if: ${{ github.event.inputs.terraform_option == 'destroy' }}
-        id: destroy
-        run: terraform destroy -auto-approve -no-color
+        run: |
+          cd backend_setup
+          terraform destroy -auto-approve -no-color
 
       - name: Output Terraform Plan
         if: steps.plan.outcome == 'failure'
