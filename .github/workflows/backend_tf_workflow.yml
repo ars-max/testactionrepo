@@ -53,7 +53,10 @@ jobs:
       - name: Terraform Apply
         if: ${{ github.event.inputs.terraform_option == 'apply' }}
         id: apply
-        run: terraform apply -auto-approve -no-color
+        run: |
+         cd backend_setup
+         terraform init -reconfigure
+         terraform apply -auto-approve -no-color
 
       - name: Terraform Destroy
         if: ${{ github.event.inputs.terraform_option == 'destroy' }}
