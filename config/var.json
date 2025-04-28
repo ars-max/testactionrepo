@@ -1,5 +1,4 @@
 {
-  
   "ec2_instance_configuration": {
     "ec2_instance_details": [
       {
@@ -7,7 +6,7 @@
         "instance_type": "t2.medium",
         "ami": "ami-0e449927258d45bc4",
         "availability_zone": "us-east-1c",
-        "subnet_ids": "subnet-0e817fdba74615adb",
+        "subnet_ids": "subnet-0f9d4f969ec7333a6",
         "volume_size": 20,
         "volume_type": "gp3",
         "delete_on_termination": false,
@@ -29,12 +28,11 @@
         }
       },
       {
-  
         "name": "testmachines2",
         "instance_type": "t2.medium",
         "ami": "ami-0e449927258d45bc4",
         "availability_zone": "us-east-1c",
-        "subnet_ids": "subnet-0e817fdba74615adb",
+        "subnet_ids": "subnet-0f9d4f969ec7333a6",
         "volume_size": 20,
         "volume_type": "gp3",
         "delete_on_termination": false,
@@ -53,6 +51,27 @@
           "Product": "core",
           "Owner": "manasa",
           "type": "standalone"
+        }
+      }
+    ]
+  },
+  "security_group_configuration": {
+    "security_group_details": [
+      {
+        "sg_name": "my-security-group1",
+        "sg_description": "Security group for my application",
+        "vpc_id": "vpc-0255920812c964f3c",
+        "ingress_from_port": 80,
+        "ingress_to_port": 80,
+        "ingress_protocol": "tcp",
+        "ingress_cidr_blocks": ["0.0.0.0/0"],
+        "egress_from_port": 0,
+        "egress_to_port": 0,
+        "egress_protocol": "-1",
+        "egress_cidr_blocks": ["0.0.0.0/0"],
+        "tags": {
+          "Environment": "production",
+          "Project": "my-project"
         }
       }
     ]
