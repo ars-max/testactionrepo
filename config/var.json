@@ -6,27 +6,27 @@
         "name": "testmachines1",
         "instance_type": "t2.medium",
         "ami": "ami-0e449927258d45bc4",
-        "availability_zone": "us-east-1d",
-        "subnet_ids": "subnet-0b54a16c1ceef2d12",
-        "volume_size": 50,
+        "availability_zone": "us-east-1c",
+        "subnet_ids": "subnet-0e817fdba74615adb",
+        "volume_size": 20,
         "volume_type": "gp3",
         "delete_on_termination": false,
         "disable_api_termination": true,
         "instance_initiated_shutdown_behavior": "stop",
         "monitoring": true,
-        "associate_public_ip_address": false,
+        "associate_public_ip_address": True,
         "encrypted": true,
         "key_name": "key1",
         "vpc_security_group_ids": [
-          "sg-091f8a71ec19c447b"
+          "sg-01bbdfa8f660cd184"
         ],
         "tags": {
-          "Name": "NCAOKTAPROD03",
-          "aws-backup": "aws-backup-prod14d",
-          "Product": "Okta",
-          "Owner": "Dan Spira",
+          "Name": "testmachines1",
+          "aws-backup": "nobackup",
+          "Product": "core",
+          "Owner": "Arshad",
           "type": "standalone",
-          "Preserve": "True"
+        
         }
       }
     ]
