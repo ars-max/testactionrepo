@@ -14,7 +14,7 @@
         "disable_api_termination": true,
         "instance_initiated_shutdown_behavior": "stop",
         "monitoring": true,
-        "associate_public_ip_address": True,
+        "associate_public_ip_address": true,
         "encrypted": true,
         "key_name": "key1",
         "vpc_security_group_ids": [
