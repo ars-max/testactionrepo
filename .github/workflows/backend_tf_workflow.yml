@@ -47,7 +47,10 @@ jobs:
       - name: Terraform Plan
         if: ${{ github.event.inputs.terraform_option == 'plan' }}
         id: plan
-        run: terraform plan -no-color
+         run:|
+          cd backend_setup
+          terraform init
+          terraform plan -no-color
         continue-on-error: true
 
       - name: Terraform Apply
