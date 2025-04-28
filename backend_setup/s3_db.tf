@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "terraform_state" {
-  bucket = "my-terraform-state-bucket033" # Change to a globally unique name
+  bucket = "my-terraform-state-bucket0331" # Change to a globally unique name
 
   versioning {
     enabled = true
