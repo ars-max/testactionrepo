@@ -1,5 +1,5 @@
 
-name: Terraform Workflow
+name: Bakend Terraform Workflow
 
 on:
   workflow_dispatch:
