@@ -69,5 +69,7 @@ variable "key_name" {
   description = "Add key pair (public and private key)"
   type        = string
 }
-
+variable "tags" {
+  type = map(string)
+}
 
