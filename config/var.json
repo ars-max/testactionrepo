@@ -27,12 +27,9 @@
           "Owner": "Arshad",
           "type": "standalone"
         }
-      }
-    ]
-  }
-   "ec2_instance_configuration": {
-    "ec2_instance_details": [
+      },
       {
+  
         "name": "testmachines2",
         "instance_type": "t2.medium",
         "ami": "ami-0e449927258d45bc4",
