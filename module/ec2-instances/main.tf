@@ -17,4 +17,5 @@ resource "aws_instance" "create_instance" {
   }
   
   vpc_security_group_ids = var.vpc_security_group_ids
+  tags                   = var.tags
 }
