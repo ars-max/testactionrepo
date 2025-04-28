@@ -25,8 +25,7 @@
           "aws-backup": "nobackup",
           "Product": "core",
           "Owner": "Arshad",
-          "type": "standalone",
-        
+          "type": "standalone"
         }
       }
     ]
