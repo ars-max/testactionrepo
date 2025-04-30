@@ -55,7 +55,7 @@
       }
     ]
   },
-  "security_group_configurations": [
+  "security_group_config": [
     {
       "name": "meth-node-sg",
       "description": "SG for admin of all Methode instances",
