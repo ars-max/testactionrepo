@@ -1,24 +1,38 @@
-# Create Security Group
-resource "aws_security_group" "create_sg" {
-  name        = var.sg_name
-  description = var.sg_description
+#create a new security group
+resource "aws_security_group" "securitygroup" {
+  name        = var.name
+  description = var.description
   vpc_id      = var.vpc_id
+  tags        = var.tags
+}
 
-  # Ingress rules
-  ingress {
-    from_port   = var.ingress_from_port
-    to_port     = var.ingress_to_port
-    protocol    = var.ingress_protocol
-    cidr_blocks = var.ingress_cidr_blocks
-  }
+resource "aws_security_group_rule" "ingress_rules" {
+  for_each = merge(
+    { for idx, rule in var.security_group_config.ingress_rules_cidr_blocks : "cidr_${idx}" => rule },
+    { for idx, rule in var.security_group_config.ingress_rules_security_group : "sg_${idx}" => rule }
+  )
 
-  # Egress rules
-  egress {
-    from_port   = var.egress_from_port
-    to_port     = var.egress_to_port
-    protocol    = var.egress_protocol
-    cidr_blocks = var.egress_cidr_blocks
-  }
+  type              = "ingress"
+  from_port         = each.value.from_port
+  to_port           = each.value.to_port
+  protocol          = each.value.protocol
+  description       = each.value.description
+  security_group_id = aws_security_group.securitygroup.id
 
-  tags = merge(var.tags, { Name = var.sg_name })
+  # Conditional assignment: If `cidr_blocks` exist, use it; otherwise, use `source_security_group_id`
+  cidr_blocks              = lookup(each.value, "cidr_blocks", null)
+  source_security_group_id = lookup(each.value, "source_security_group_id", null)
+}
+
+
+resource "aws_security_group_rule" "egress" {
+  for_each = { for idx, rule in var.security_group_config.egress_rules : idx => rule }
+
+  type              = "egress"
+  from_port         = each.value.from_port
+  to_port           = each.value.to_port
+  protocol          = each.value.protocol
+  cidr_blocks       = each.value.cidr_blocks
+  security_group_id = aws_security_group.securitygroup.id
+  depends_on        = [aws_security_group.securitygroup]
 }
