@@ -30,7 +30,9 @@ resource "aws_vpc" "main" {
 }
 
 module "Sg_grp" {
-  source = "./modules/security_group" # Replace with the actual path to your module
+  source = "./module/Sg_grp"
+  # ... rest of your module configuration ...
+
 
   for_each = toset([for item in jsondecode(file("config/var.json")) : item.vpc_id]) # This might need adjustment
 
