@@ -23,7 +23,7 @@ module "ec2-instances" {
 
 #Security group
 module "Sg_grp" {
-  source   = "./modules/Sg_grp"
+  source   = "./module/Sg_grp"
   for_each = { for sg in var.security_group_config.sg_base_details : sg.name => sg }
 
   name        = each.key
