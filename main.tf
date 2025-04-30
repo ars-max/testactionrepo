@@ -31,29 +31,8 @@ resource "aws_vpc" "main" {
 
 module "Sg_grp" {
   source = "./module/Sg_grp"
-  # ... rest of your module configuration ...
 
-
-  for_each = toset([for item in jsondecode(file("config/var.json")) : item.vpc_id]) # This might need adjustment
-
-  # The following lines are where the error occurs because the module isn't expecting these directly
-  # vpc_id         = each.value.vpc_id
-  # ingress_from_port   = each.value.ingress_from_port
-  # ingress_to_port     = each.value.ingress_to_port
-  # ingress_protocol    = each.value.ingress_protocol
-  # ingress_cidr_blocks = each.value.ingress_cidr_blocks
-  # egress_from_port   = each.value.egress_from_port
-  # egress_to_port     = each.value.egress_to_port
-  # egress_protocol    = each.value.egress_protocol
-  # egress_cidr_blocks = each.value.egress_cidr_blocks
-  # tags = each.value.tags
-
-  # Instead, you need to map the values from each element of your var.json
-  # to the input variables defined in the Sg_grp module.
-  # The 'for_each' should likely iterate over the list of security group configurations.
-  # Let's assume your var.json is a list of objects, as shown in step 4.
-
-  for_each = {for sg in jsondecode(file("config/var.json")) : sg.Name => sg} # Using Name as a key
+  for_each = {for sg in jsondecode(file("config/var.json")) : sg.Name => sg} # Define for_each only once
 
   vpc_id              = each.value.vpc_id
   ingress_from_port   = each.value.ingress_from_port
