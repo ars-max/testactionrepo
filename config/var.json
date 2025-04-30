@@ -55,7 +55,7 @@
       }
     ]
   },
-  "security_group_config": [
+"security_group_config": [
     {
       "name": "meth-node-sg",
       "description": "SG for admin of all Methode instances",
@@ -143,7 +143,6 @@
           "description": "RDP Traffic from internal"
         }
       ],
-      ],
       "egress_rules": [
         {
           "from_port": 0,
@@ -161,3 +160,4 @@
     }
   ]
 }
+  
