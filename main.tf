@@ -21,26 +21,19 @@ module "ec2-instances" {
   tags                                     = each.value.tags
 }
 
-resource "aws_vpc" "main" {
-  cidr_block = "172.31.0.0/16"
-  tags = {
-    Name = "my-vpc"
+#Security group
+module "security_group" {
+  source   = "./modules/Sg_grp"
+  for_each = { for sg in var.security_group_config.sg_base_details : sg.name => sg }
+
+  name        = each.key
+  description = each.value.description
+  vpc_id      = each.value.vpc_id
+
+  security_group_config = {
+    ingress_rules_cidr_blocks    = each.value.ingress_rules_cidr_blocks
+    ingress_rules_security_group = each.value.ingress_rules_security_group
+    egress_rules                 = each.value.egress_rules
   }
-}
-
-module "Sg_grp" {
-  source = "./module/Sg_grp"
-
-  for_each = { for sg in var.security_group_configurations : sg.Name => sg }
-
-  vpc_id              = each.value.vpc_id
-  ingress_from_port   = each.value.ingress_from_port
-  ingress_to_port     = each.value.ingress_to_port
-  ingress_protocol    = each.value.ingress_protocol
-  ingress_cidr_blocks = each.value.ingress_cidr_blocks
-  egress_from_port    = each.value.egress_from_port
-  egress_to_port      = each.value.egress_to_port
-  egress_protocol     = each.value.egress_protocol
-  egress_cidr_blocks  = each.value.egress_cidr_blocks
-  tags                = each.value.tags
+ tags                            = each.value.tags
 }
