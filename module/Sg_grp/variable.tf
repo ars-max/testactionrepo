@@ -1,32 +1,46 @@
+variable "name" {
+  description = "Name of the security group"
+  type        = string
+}
+
 variable "vpc_id" {
-  type = string
   description = "The ID of the VPC"
+  type        = string
 }
-
-variable "ingress_from_port" {
-  type = number
-  description = "The starting port for the ingress rule"
-}
-
-variable "ingress_to_port" {
-  type = number
-  description = "The ending port for the ingress rule"
-}
-
-variable "ingress_protocol" {
-  type = string
-  description = "The protocol for the ingress rule (e.g., tcp, udp, icmp)"
-}
-
-variable "ingress_cidr_blocks" {
-  type = list(string)
-  description = "A list of CIDR blocks to allow ingress from"
-}
-
-# ... similarly define variables for egress rules ...
 
 variable "tags" {
-  type = map(string)
-  description = "A map of tags to apply to the security group"
-  default = {}
+  description = "Tags for the security group"
+  type        = map(string)
+}
+
+variable "description" {
+  description = "Description of the security group"
+  type        = string
+}
+
+variable "security_group_config" {
+  description = "Configuration for the security group, including ingress and egress rules"
+  type = object({
+    ingress_rules_cidr_blocks = list(object({
+      from_port   = number
+      to_port     = number
+      protocol    = string
+      cidr_blocks = list(string)
+      description = string
+    }))
+    ingress_rules_security_group = list(object({
+      from_port                = number
+      to_port                  = number
+      protocol                 = string
+      source_security_group_id = string
+      description              = string
+    }))
+    egress_rules = list(object({
+      from_port   = number
+      to_port     = number
+      protocol    = string
+      cidr_blocks = list(string)
+      description = optional(string, "Allow egress traffic") # Optional with default
+    }))
+  })
 }
