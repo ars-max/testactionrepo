@@ -30,21 +30,38 @@ variable "ec2_instance_configuration" {
     ec2_instance_details = []
   }
 }
-
-# Security Group variables (Corrected)
-variable "security_group_configurations" {
-  type = list(object({
-    Name                = string # Added Name to match how you use it in for_each
-    vpc_id              = string
-    ingress_from_port   = number
-    ingress_to_port     = number
-    ingress_protocol    = string
-    ingress_cidr_blocks = list(string)
-    egress_from_port    = number
-    egress_to_port      = number
-    egress_protocol     = string
-    egress_cidr_blocks  = list(string)
-    tags                = map(string)
-  }))
-  default = []
+#Security group variables
+variable "security_group_config" {
+  description = "Configuration for the security group"
+  type = object({
+    sg_base_details = list(object({
+      name        = string
+      description = string
+      vpc_id      = string
+      ingress_rules_cidr_blocks = list(object({
+        from_port   = number
+        to_port     = number
+        protocol    = string
+        cidr_blocks = list(string)
+        description = string
+      }))
+      ingress_rules_security_group = list(object({
+        from_port                = number
+        to_port                  = number
+        protocol                 = string
+        source_security_group_id = string
+        description              = string
+      }))
+      egress_rules = list(object({
+        from_port   = number
+        to_port     = number
+        protocol    = string
+        cidr_blocks = list(string)
+      }))
+      tags = map(string)
+    }))
+  })
+  default = {
+    sg_base_details = []
+  }
 }
