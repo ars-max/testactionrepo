@@ -55,39 +55,46 @@
       }
     ]
   },
-  [
-  {
-    "vpc_id": "vpc-xxxxxxxxxxxxxxxxx",
-    "ingress_from_port": 80,
-    "ingress_to_port": 80,
-    "ingress_protocol": "tcp",
-    "ingress_cidr_blocks": ["10.0.0.0/16"],
-    "egress_from_port": 0,
-    "egress_to_port": 0,
-    "egress_protocol": "-1",
-    "egress_cidr_blocks": ["0.0.0.0/0"],
-    "tags": {
-      "Environment": "dev",
-      "Name": "web-sg"
-    }
-  },
-  {
-    "vpc_id": "vpc-yyyyyyyyyyyyyyyyy",
-    "ingress_from_port": 22,
-    "ingress_to_port": 22,
-    "ingress_protocol": "tcp",
-    "ingress_cidr_blocks": ["203.0.113.0/24"],
-    "egress_from_port": 0,
-    "egress_to_port": 0,
-    "egress_protocol": "-1",
-    "egress_cidr_blocks": ["0.0.0.0/0"],
-    "tags": {
-      "Environment": "prod",
-      "Name": "ssh-sg"
-    }
-  }
-]
+  "security_group_configurations": [
+    {
+      "Name": "web-sg",
+      "vpc_id": "vpc-xxxxxxxxxxxxxxxxx",
+      "ingress_from_port": 80,
+      "ingress_to_port": 80,
+      "ingress_protocol": "tcp",
+      "ingress_cidr_blocks": [
+        "10.0.0.0/16"
+      ],
+      "egress_from_port": 0,
+      "egress_to_port": 0,
+      "egress_protocol": "-1",
+      "egress_cidr_blocks": [
+        "0.0.0.0/0"
+      ],
+      "tags": {
+        "Environment": "dev",
+        "Name": "web-sg"
       }
-    ]
-  }
+    },
+    {
+      "Name": "ssh-sg",
+      "vpc_id": "vpc-yyyyyyyyyyyyyyyyy",
+      "ingress_from_port": 22,
+      "ingress_to_port": 22,
+      "ingress_protocol": "tcp",
+      "ingress_cidr_blocks": [
+        "203.0.113.0/24"
+      ],
+      "egress_from_port": 0,
+      "egress_to_port": 0,
+      "egress_protocol": "-1",
+      "egress_cidr_blocks": [
+        "0.0.0.0/0"
+      ],
+      "tags": {
+        "Environment": "prod",
+        "Name": "ssh-sg"
+      }
+    }
+  ]
 }
