@@ -57,43 +57,121 @@
   },
   "security_group_configurations": [
     {
-      "Name": "web-sg",
+      "name": "meth-node-sg",
+      "description": "SG for admin of all Methode instances",
       "vpc_id": "vpc-089fa9835b46223e2",
-      "ingress_from_port": 80,
-      "ingress_to_port": 80,
-      "ingress_protocol": "tcp",
-      "ingress_cidr_blocks": [
-        "10.0.0.0/16"
+      "ingress_rules_cidr_blocks": [
+        {
+          "from_port": -1,
+          "to_port": -1,
+          "protocol": "icmp",
+          "cidr_blocks": [
+            "172.27.240.0/20"
+          ],
+          "description": "ICMP traffic from Workspaces 1"
+        },
+        {
+          "from_port": -1,
+          "to_port": -1,
+          "protocol": "icmp",
+          "cidr_blocks": [
+            "172.28.112.0/20"
+          ],
+          "description": "ICMP traffic from Workspaces 2"
+        },
+        {
+          "from_port": -1,
+          "to_port": -1,
+          "protocol": "icmp",
+          "cidr_blocks": [
+            "10.64.0.0/12"
+          ],
+          "description": "ICMP Traffic from internal"
+        },
+        {
+          "from_port": 22,
+          "to_port": 22,
+          "protocol": "tcp",
+          "cidr_blocks": [
+            "172.27.240.0/20"
+          ],
+          "description": "SSH traffic from Workspaces 1"
+        },
+        {
+          "from_port": 22,
+          "to_port": 22,
+          "protocol": "tcp",
+          "cidr_blocks": [
+            "172.28.112.0/20"
+          ],
+          "description": "SSH traffic from Workspaces 2"
+        },
+        {
+          "from_port": 22,
+          "to_port": 22,
+          "protocol": "tcp",
+          "cidr_blocks": [
+            "10.64.0.0/12"
+          ],
+          "description": "SSH Traffic from internal"
+        },
+        {
+          "from_port": 3389,
+          "to_port": 3389,
+          "protocol": "tcp",
+          "cidr_blocks": [
+            "172.27.240.0/20"
+          ],
+          "description": "RDP traffic from Workspaces 1"
+        },
+        {
+          "from_port": 3389,
+          "to_port": 3389,
+          "protocol": "tcp",
+          "cidr_blocks": [
+            "172.28.112.0/20"
+          ],
+          "description": "RDP traffic from Workspaces 2"
+        },
+        {
+          "from_port": 3389,
+          "to_port": 3389,
+          "protocol": "tcp",
+          "cidr_blocks": [
+            "10.64.0.0/12"
+          ],
+          "description": "RDP Traffic from internal"
+        }
       ],
-      "egress_from_port": 0,
-      "egress_to_port": 0,
-      "egress_protocol": "-1",
-      "egress_cidr_blocks": [
-        "0.0.0.0/0"
+      "ingress_rules_security_group": [
+        {
+          "from_port": 0,
+          "to_port": 65535,
+          "protocol": "tcp",
+          "source_security_group_id": "sg-0ef94a98f2ba3c3b2",
+          "description": "All Traffic between members of this group"
+        },
+        {
+          "from_port": -1,
+          "to_port": -1,
+          "protocol": "icmp",
+          "source_security_group_id": "sg-0ef94a98f2ba3c3b2",
+          "description": "ICMP Traffic between members of this group"
+        }
+      ],
+      "egress_rules": [
+        {
+          "from_port": 0,
+          "to_port": 0,
+          "protocol": -1,
+          "cidr_blocks": [
+            "0.0.0.0/0"
+          ],
+          "description": "Allow all outbound traffic"
+        }
       ],
       "tags": {
-        "Environment": "dev",
-        "Name": "web-sg"
-      }
-    },
-    {
-      "Name": "ssh-sg",
-      "vpc_id": "vpc-089fa9835b46223e2",
-      "ingress_from_port": 22,
-      "ingress_to_port": 22,
-      "ingress_protocol": "tcp",
-      "ingress_cidr_blocks": [
-        "203.0.113.0/24"
-      ],
-      "egress_from_port": 0,
-      "egress_to_port": 0,
-      "egress_protocol": "-1",
-      "egress_cidr_blocks": [
-        "0.0.0.0/0"
-      ],
-      "tags": {
-        "Environment": "prod",
-        "Name": "ssh-sg"
+        "Name": "meth-node-sg"
       }
     }
   ]
