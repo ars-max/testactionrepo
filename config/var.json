@@ -16,9 +16,7 @@
         "associate_public_ip_address": true,
         "encrypted": true,
         "key_name": "key1",
-        "vpc_security_group_ids": [
-          "sg-07753c38c15fd985a"
-        ],
+        "vpc_security_group_ids": ["sg-07753c38c15fd985a"],
         "tags": {
           "Name": "testmachines1",
           "aws-backup": "nobackup",
@@ -42,9 +40,7 @@
         "associate_public_ip_address": true,
         "encrypted": true,
         "key_name": "key1",
-        "vpc_security_group_ids": [
-          "sg-07753c38c15fd985a"
-        ],
+        "vpc_security_group_ids": ["sg-07753c38c15fd985a"],
         "tags": {
           "Name": "testmachines2",
           "aws-backup": "nobackup",
@@ -55,11 +51,10 @@
       }
     ]
   },
-{
   "security_group_config": [
     {
       "name": "web-sg",
-      "description": "Web server SG",
+      "description": "Web SG",
       "vpc_id": "vpc-024d668dcf4ea3b8e",
       "ingress_rules_cidr_blocks": [
         {
