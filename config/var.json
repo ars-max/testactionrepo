@@ -6,7 +6,7 @@
         "instance_type": "t2.medium",
         "ami": "ami-0e449927258d45bc4",
         "availability_zone": "us-east-1c",
-        "subnet_ids": "subnet-0f2e59f07754b550c",
+        "subnet_ids": "subnet-04d6220335d182b76",
         "volume_size": 20,
         "volume_type": "gp3",
         "delete_on_termination": false,
@@ -17,7 +17,7 @@
         "encrypted": true,
         "key_name": "key1",
         "vpc_security_group_ids": [
-          "sg-0cb4623e536ad9278"
+          "sg-07753c38c15fd985a"
         ],
         "tags": {
           "Name": "testmachines1",
@@ -32,7 +32,7 @@
         "instance_type": "t2.medium",
         "ami": "ami-0e449927258d45bc4",
         "availability_zone": "us-east-1c",
-        "subnet_ids": "subnet-0f2e59f07754b550c",
+        "subnet_ids": "subnet-04d6220335d182b76",
         "volume_size": 20,
         "volume_type": "gp3",
         "delete_on_termination": false,
@@ -43,7 +43,7 @@
         "encrypted": true,
         "key_name": "key1",
         "vpc_security_group_ids": [
-          "sg-0cb4623e536ad9278"
+          "sg-07753c38c15fd985a"
         ],
         "tags": {
           "Name": "testmachines2",
@@ -58,7 +58,7 @@
 "security_group_config": [
     {
       "Name": "web-sg",
-      "vpc_id": "vpc-0aaa59fb024db919e",
+      "vpc_id": "vpc-024d668dcf4ea3b8e",
       "ingress_from_port": 80,
       "ingress_to_port": 80,
       "ingress_protocol": "tcp",
@@ -73,7 +73,7 @@
     },
     {
       "Name": "ssh-sg",
-      "vpc_id": "vpc-0aaa59fb024db919e",
+      "vpc_id": "vpc-024d668dcf4ea3b8e",
       "ingress_from_port": 22,
       "ingress_to_port": 22,
       "ingress_protocol": "tcp",
