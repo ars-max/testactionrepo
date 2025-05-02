@@ -33,35 +33,24 @@ variable "ec2_instance_configuration" {
 #Security group variables
 variable "security_group_config" {
   description = "Configuration for the security group"
-  type = object({
-    sg_base_details = list(object({
-      name        = string
+  type = list(object({
+    name        = string
+    description = string
+    vpc_id      = string
+    ingress_rules_cidr_blocks = list(object({
+      from_port   = number
+      to_port     = number
+      protocol    = string
+      cidr_blocks = list(string)
       description = string
-      vpc_id      = string
-      ingress_rules_cidr_blocks = list(object({
-        from_port   = number
-        to_port     = number
-        protocol    = string
-        cidr_blocks = list(string)
-        description = string
-      }))
-      ingress_rules_security_group = list(object({
-        from_port                = number
-        to_port                  = number
-        protocol                 = string
-        source_security_group_id = string
-        description              = string
-      }))
-      egress_rules = list(object({
-        from_port   = number
-        to_port     = number
-        protocol    = string
-        cidr_blocks = list(string)
-      }))
-      tags = map(string)
     }))
-  })
-  default = {
-    sg_base_details = []
-  }
+    egress_rules = list(object({
+      from_port   = number
+      to_port     = number
+      protocol    = number
+      cidr_blocks = list(string)
+      description = string
+    }))
+    tags = map(string)
+  }))
 }

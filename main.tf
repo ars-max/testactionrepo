@@ -23,17 +23,6 @@ module "ec2-instances" {
 
 #Security group
 module "Sg_grp" {
-  source   = "./module/Sg_grp"
-  for_each = { for sg in var.security_group_config.sg_base_details : sg.name => sg }
-
-  name        = each.key
-  description = each.value.description
-  vpc_id      = each.value.vpc_id
-
-  security_group_config = {
-    ingress_rules_cidr_blocks    = each.value.ingress_rules_cidr_blocks
-    ingress_rules_security_group = each.value.ingress_rules_security_group
-    egress_rules                 = each.value.egress_rules
-  }
- tags                            = each.value.tags
+  source = "./module/Sg_grp"
+  security_group_config = var.security_group_config
 }
