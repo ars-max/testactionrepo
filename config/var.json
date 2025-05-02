@@ -55,7 +55,7 @@
       }
     ]
   },
-"security_group_configurations": [
+"security_group_config": [
     {
       "Name": "web-sg",
       "vpc_id": "vpc-0aaa59fb024db919e",
