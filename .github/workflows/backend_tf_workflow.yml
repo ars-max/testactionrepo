@@ -14,8 +14,8 @@ on:
           - destroy
       git_branch:
         description: 'Git Branch to Checkout'
-        required: false
-        type: string
+        required: true
+        type: choice
         default: main
 
 env:
