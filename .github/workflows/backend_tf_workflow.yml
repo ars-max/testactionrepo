@@ -15,7 +15,7 @@ on:
       git_branch:
         description: 'Git Branch to Checkout'
         required: true
-        type: choice
+        type: string
         default: main
 
 env:
