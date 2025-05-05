@@ -30,7 +30,7 @@
         "instance_type": "t2.medium",
         "ami": "ami-0e449927258d45bc4",
         "availability_zone": "us-east-1c",
-        "subnet_ids": "subnet-001847eac90898dffa",
+        "subnet_ids": "subnet-001847eac90898dff",
         "volume_size": 20,
         "volume_type": "gp3",
         "delete_on_termination": false,
