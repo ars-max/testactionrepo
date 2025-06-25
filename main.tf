@@ -29,7 +29,7 @@ module "Sg_grp" {
 
 # Loadbalancer creation
 #load-balancer module
-module "load_balancer" {
+module "loadbalncer" {
   source   = "./modules/loadbalncer"
   for_each = { for lb in var.lb_configuration.lb_details : lb.name => lb }
 
