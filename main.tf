@@ -43,7 +43,5 @@ module "loadbalncer" {
   internal                   = each.value.internal
   enable_http2               = each.value.enable_http2
   enable_deletion_protection = each.value.enable_deletion_protection
-  tags = merge(var.provider_tags, each.value.tags, {
-    Name = each.key
-  })
+  tags                       = each.value.tags
 }
