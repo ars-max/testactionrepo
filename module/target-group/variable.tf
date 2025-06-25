@@ -37,36 +37,36 @@ variable "health_check_path" {
 # Health Check Protocol
 variable "health_check_protocol" {
   description = "The protocol to use for health checks (HTTP, HTTPS)"
-  type        = optional(string)
+  type        = string
 }
 
 # Health Check Interval
 variable "health_check_interval" {
   description = "Approximate interval, in seconds, between health checks"
-  type        = optional(number)
+  type        = number
 }
 
 # Health Check Timeout
 variable "health_check_timeout" {
   description = "The amount of time, in seconds, during which no response means a failed health check"
-  type        = optional(number)
+  type        = number
 }
 
 # Healthy Threshold Count
 variable "healthy_threshold" {
   description = "The number of consecutive health checks successes required before considering an unhealthy target healthy"
-  type        = optional(number)
+  type        = number
 }
 
 # Unhealthy Threshold Count
 variable "unhealthy_threshold" {
   description = "The number of consecutive health check failures required before considering a target unhealthy"
-  type        = optional(number)
+  type        = number
 }
 
 variable "healthCheckEnabled" {
   description = "The health check should be enabled to true or false"
-  type        = optional(bool)
+  type        = bool
 }
 
 variable "tags" {
@@ -86,38 +86,38 @@ variable "deregistration_delay" {
 
 variable "slow_start_duruation" {
   description = "Amount time for targets to warm up before the load balancer sends them a full share of requests"
-  type        =  optional(number)
+  type        = number
 }
 
 variable "stickiness_type" {
   description = "type of the stickiness"
-  type        = optional(string)
+  type        = string
 }
 
 variable "stickiness_enabled" {
   description = "enable or disable stickiness"
-  type        = optional(bool)
+  type        = bool
 }
 
 variable "cookie_duration" {
   description = "duruation of the coikie"
-  type        = optional(number)
+  type        = number
 }
 
 variable "successCode_matcher" {
   description = "HTTP or gRPC codes to use when checking for a successful response from a target"
-  type        = optional(string)
+  type        = string
 }
 
 variable "cookie_name" {
   description = "Name of the load balancer cookie"
-  type        = optional(string)
+  type        = string
 }
 
 variable "lambda_multi_value_headers_enabled" {
-  type = optional(bool)
+  type = bool
 }
 
 variable "proxy_protocol_v2" {
-  type = optional(bool)
+  type = bool
 }
