@@ -74,39 +74,7 @@ variable "lb_configuration" {
     }))
   })
 }
-#variables for target groups
-variable "tg_configuration" {
-  type = object({
-    tg_details = list(object({
-      vpc_id                             = string
-      target_type                        = string
-      name                               = string
-      target_group_port                  = number
-      target_group_protocol              = string
-      health_check_path                  = string
-      health_check_interval              = number
-      health_check_timeout               = number
-      healthy_threshold                  = number
-      unhealthy_threshold                = number
-      healthCheckEnabled                 = bool
-      health_check_protocol              = string
-      health_check_port                  = optional(string)
-      cookie_duration                    = optional(number)
-      deregistration_delay               = optional(number)
-      slow_start_duruation               = optional(number)
-      stickiness_enabled                 = optional(bool)
-      stickiness_type                    = optional(string)
-      successCode_matcher                = optional(string)
-      cookie_name                        = optional(string)
-      lambda_multi_value_headers_enabled = optional(bool)
-      proxy_protocol_v2                  = optional(bool)
-      tags                               = map(string)
-    }))
-  })
-  default = {
-    tg_details = []
-  }
-}
+#tg variable declaration
 variable "tg_configuration" {
   description = "Configuration details for Target Groups."
   type = object({
