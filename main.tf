@@ -45,3 +45,17 @@ module "loadbalncer" {
   enable_deletion_protection = each.value.enable_deletion_protection
   tags                       = each.value.tags
 }
+module "target_groups" { # It's good practice to pluralize the name for for_each modules
+  source   = "./module/target-group"
+  for_each = { for tg in var.tg_configuration.tg_details : tg.name => tg }
+
+  # Required attributes (always expected in var.json)
+  name                   = each.value.name
+  target_group_port      = each.value.target_group_port
+  target_group_protocol  = each.value.target_group_protocol
+  vpc_id                 = each.value.vpc_id
+  target_type            = each.value.target_type
+
+
+  tags = each.value.tags # Assuming tags are always present
+}

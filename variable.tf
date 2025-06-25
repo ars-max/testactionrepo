@@ -74,3 +74,19 @@ variable "lb_configuration" {
     }))
   })
 }
+#tg variable declaration
+variable "tg_configuration" {
+  description = "Configuration details for Target Groups."
+  type = object({
+    tg_details = list(object({
+      name                  = string
+      target_group_port     = number
+      target_group_protocol = string
+      vpc_id                = string
+      target_type           = string
+      tags = object({
+        Owner = string
+      })
+    })) # Closing parenthesis for list(object({ ... }))
+  })   # Closing curly brace for object({ ... })
+}      # Closing curly brace for variable "tg_configuration"
