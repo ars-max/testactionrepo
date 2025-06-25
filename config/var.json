@@ -17,7 +17,7 @@
             "encrypted":true,
             "key_name":"Key1",
             "vpc_security_group_ids":[
-               "sg-0e1378c3afb750da2"
+               "sg-0b5c53f7b040c14d4"
             ],
             "tags":{
                "Name":"testmachines1",
@@ -43,7 +43,7 @@
             "encrypted":true,
             "key_name":"Key1",
             "vpc_security_group_ids":[
-               "sg-0e1378c3afb750da2"
+               "sg-0b5c53f7b040c14d4"
             ],
             "tags":{
                "Name":"testmachines2",
@@ -69,7 +69,7 @@
             "encrypted":true,
             "key_name":"Key1",
             "vpc_security_group_ids":[
-               "sg-0e1378c3afb750da2"
+               "sg-0b5c53f7b040c14d4"
             ],
             "tags":{
                "Name":"testmachines2",
@@ -113,18 +113,18 @@
          }
       },
       {
-         "name":"ssh-sg",
+         "name":"ldap-sg",
          "description":"SSH SG",
          "vpc_id":"vpc-017b9b3c4ddfe0c53",
          "ingress_rules_cidr_blocks":[
             {
-               "from_port":22,
-               "to_port":22,
+               "from_port":389,
+               "to_port":389,
                "protocol":"tcp",
                "cidr_blocks":[
                   "203.0.113.0/24"
                ],
-               "description":"Allow SSH"
+               "description":"Allow ldap"
             }
          ],
          "egress_rules":[
@@ -146,9 +146,9 @@
       "lb_configuration":{
          "lb_details":[
             {
-               "name":"jde-db-prod-ext-nlb",
+               "name":"aws-ldap-prd-nlb",
                "security_group_ids":[
-                  "sg-0857f7922b1b7d54a"
+                  "sg-0b5c53f7b040c14d4"
                ],
                "subnet_ids":[
                   "subnet-03a35bac22ae11b1c",
@@ -158,11 +158,11 @@
                "load_balancer_type":"network",
                "ip_address_type":"ipv4",
                "idle_timeout":60,
-               "internal":false,
-               "enable_http2":true,
+               "internal":true,
+               "enable_http2":flase,
                "enable_deletion_protection":false,
                "tags":{
-                  "Owner":"Ali Bhatti",
+                  "Owner":"Arshad",
                   "preserve_c7n_gc":"true"
                }
             }
