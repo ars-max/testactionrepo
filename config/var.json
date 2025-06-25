@@ -59,7 +59,7 @@
             "ami":"ami-0e449927258d45bc4",
             "availability_zone":"us-east-1d",
             "subnet_ids":"subnet-0cbcb44f0f98d75d1",
-            "Kvolume_size":20,
+            "volume_size":20,
             "volume_type":"gp3",
             "delete_on_termination":false,
             "disable_api_termination":true,
