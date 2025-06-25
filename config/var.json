@@ -89,20 +89,9 @@
                 "target_group_protocol": "TCP",
                 "vpc_id": "vpc-017b9b3c4ddfe0c53",
                 "target_type": "instance",
-                "stickiness_enabled": false,
                 "tags": {
                     "Owner": "Arshad"
-                },
-                "health_check_enabled": true,
-                "health_check_interval": 30,
-                "health_check_path": "/",
-                "health_check_protocol": "HTTP",
-                "health_check_timeout": 5,
-                "healthy_threshold": 3,
-                "unhealthy_threshold": 3,
-                "health_check_port": 389,
-                "deregistration_delay": 300,
-                "slow_start_duration": 0
+                }
             }
         ]
     },
@@ -131,66 +120,3 @@
                         "0.0.0.0/0"
                     ],
                     "description": "Allow all outbound"
-                }
-            ],
-            "tags": {
-                "Environment": "dev"
-            }
-        },
-        {
-            "name": "ldap-sg",
-            "description": "SSH SG",
-            "vpc_id": "vpc-017b9b3c4ddfe0c53",
-            "ingress_rules_cidr_blocks": [
-                {
-                    "from_port": 389,
-                    "to_port": 389,
-                    "protocol": "tcp",
-                    "cidr_blocks": [
-                        "203.0.113.0/24"
-                    ],
-                    "description": "Allow ldap"
-                }
-            ],
-            "egress_rules": [
-                {
-                    "from_port": 0,
-                    "to_port": 0,
-                    "protocol": -1,
-                    "cidr_blocks": [
-                        "0.0.0.0/0"
-                    ],
-                    "description": "Allow all outbound"
-                }
-            ],
-            "tags": {
-                "Environment": "prod"
-            }
-        }
-    ],
-    "lb_configuration": {
-        "lb_details": [
-            {
-                "name": "aws-ldap-prd-nlb",
-                "security_group_ids": [
-                    "sg-0b5c53f7b040c14d4"
-                ],
-                "subnet_ids": [
-                    "subnet-03a35bac22ae11b1c",
-                    "subnet-0cbcb44f0f98d75d1",
-                    "subnet-02959396670f60ff4"
-                ],
-                "load_balancer_type": "network",
-                "ip_address_type": "ipv4",
-                "idle_timeout": 60,
-                "internal": true,
-                "enable_http2": false,
-                "enable_deletion_protection": false,
-                "tags": {
-                    "Owner": "Arshad",
-                    "preserve_c7n_gc": "true"
-                }
-            }
-        ]
-    }
-}
