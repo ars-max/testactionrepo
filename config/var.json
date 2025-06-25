@@ -81,20 +81,21 @@
             }
         ]
     },
-    {
-  "tg_configuration": {
-    "tg_details": [
-      {
-        "name": "nprd-tg-aws-ldap,
-        "target_group_port": 389,
-        "target_group_protocol": "TCP,
-        "vpc_id": "vpc-017b9b3c4ddfe0c53",
-        "target_type": "instance",
-        "stickiness_enabled": false,
-        "tags": {
-          "Owner": "Arshad"
-        }
-      },
+    "tg_configuration": {
+        "tg_details": [
+            {
+                "name": "nprd-tg-aws-ldap",
+                "target_group_port": 389,
+                "target_group_protocol": "TCP",
+                "vpc_id": "vpc-017b9b3c4ddfe0c53",
+                "target_type": "instance",
+                "stickiness_enabled": false,
+                "tags": {
+                    "Owner": "Arshad"
+                }
+            }
+        ]
+    },
     "security_group_config": [
         {
             "name": "web-sg",
