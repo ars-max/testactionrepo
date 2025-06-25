@@ -26,3 +26,22 @@ module "Sg_grp" {
   source = "./module/Sg_grp"
   security_group_config = var.security_group_config
 }
+
+# Loadbalancer creation
+#load-balancer module
+module "loadbalncer" {
+  source   = "./module/loadbalncer"
+  for_each = { for lb in var.lb_configuration.lb_details : lb.name => lb }
+
+  name = each.key
+
+  subnet_ids                 = each.value.subnet_ids
+  idle_timeout               = each.value.idle_timeout
+  ip_address_type            = each.value.ip_address_type
+  load_balancer_type         = each.value.load_balancer_type
+  security_group_ids         = each.value.security_group_ids
+  internal                   = each.value.internal
+  enable_http2               = each.value.enable_http2
+  enable_deletion_protection = each.value.enable_deletion_protection
+  tags                       = each.value.tags
+}
