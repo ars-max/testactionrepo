@@ -54,3 +54,23 @@ variable "security_group_config" {
     tags = map(string)
   }))
 }
+variable "lb_configuration" {
+  description = "Configuration details for Load Balancers."
+  type = object({
+    lb_details = list(object({
+      name                       = string
+      security_group_ids         = list(string)
+      subnet_ids                 = list(string)
+      load_balancer_type         = string
+      ip_address_type            = string
+      idle_timeout               = number
+      internal                   = bool
+      enable_http2               = bool
+      enable_deletion_protection = bool
+      tags = object({
+        Owner            = string
+        preserve_c7n_gc  = string
+      })
+    }))
+  })
+}
