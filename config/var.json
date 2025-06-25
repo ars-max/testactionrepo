@@ -92,7 +92,17 @@
                 "stickiness_enabled": false,
                 "tags": {
                     "Owner": "Arshad"
-                }
+                },
+                "health_check_enabled": true,
+                "health_check_interval": 30,
+                "health_check_path": "/",
+                "health_check_protocol": "HTTP",
+                "health_check_timeout": 5,
+                "healthy_threshold": 3,
+                "unhealthy_threshold": 3,
+                "health_check_port": 389,
+                "deregistration_delay": 300,
+                "slow_start_duration": 0
             }
         ]
     },
