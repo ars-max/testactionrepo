@@ -5,8 +5,8 @@
             "name":"testmachines1",
             "instance_type":"t2.medium",
             "ami":"ami-0e449927258d45bc4",
-            "availability_zone":"us-east-1b",
-            "subnet_ids":"subnet-02959396670f60ff4",
+            "availability_zone":"us-east-1f",
+            "subnet_ids":"subnet-0826f0a3e9731f101",
             "volume_size":20,
             "volume_type":"gp3",
             "delete_on_termination":false,
@@ -17,7 +17,7 @@
             "encrypted":true,
             "key_name":"Key1",
             "vpc_security_group_ids":[
-               "sg-0b5c53f7b040c14d4"
+               "sg-08244142c0400e86e"
             ],
             "tags":{
                "Name":"testmachines1",
@@ -32,7 +32,7 @@
             "instance_type":"t2.medium",
             "ami":"ami-0e449927258d45bc4",
             "availability_zone":"us-east-1d",
-            "subnet_ids":"subnet-0cbcb44f0f98d75d1",
+            "subnet_ids":"subnet-0ae8f0ee56ef30f0a",
             "volume_size":20,
             "volume_type":"gp3",
             "delete_on_termination":false,
@@ -43,7 +43,7 @@
             "encrypted":true,
             "key_name":"Key1",
             "vpc_security_group_ids":[
-               "sg-0b5c53f7b040c14d4"
+               "sg-08244142c0400e86e"
             ],
             "tags":{
                "Name":"testmachines2",
@@ -57,8 +57,8 @@
             "name":"testmachines3",
             "instance_type":"t2.medium",
             "ami":"ami-0e449927258d45bc4",
-            "availability_zone":"us-east-1d",
-            "subnet_ids":"subnet-0cbcb44f0f98d75d1",
+            "availability_zone":"us-east-1c",
+            "subnet_ids":"subnet-023ce49ef44ce6ef5",
             "volume_size":20,
             "volume_type":"gp3",
             "delete_on_termination":false,
@@ -69,7 +69,7 @@
             "encrypted":true,
             "key_name":"Key1",
             "vpc_security_group_ids":[
-               "sg-0b5c53f7b040c14d4"
+               "sg-08244142c0400e86e"
             ],
             "tags":{
                "Name":"testmachines2",
@@ -87,7 +87,7 @@
             "name":"nprd-tg-aws-ldap",
             "target_group_port":389,
             "target_group_protocol":"TCP",
-            "vpc_id":"vpc-017b9b3c4ddfe0c53",
+            "vpc_id":"vpc-0c76012669482aa8e",
             "target_type":"instance",
             "tags":{
                "Owner":"Arshad"
@@ -99,7 +99,7 @@
       {
          "name":"web-sg",
          "description":"Web SG",
-         "vpc_id":"vpc-017b9b3c4ddfe0c53",
+         "vpc_id":"vpc-0c76012669482aa8e",
          "ingress_rules_cidr_blocks":[
             {
                "from_port":80,
@@ -129,7 +129,7 @@
       {
          "name":"ldap-sg",
          "description":"SSH SG",
-         "vpc_id":"vpc-017b9b3c4ddfe0c53",
+         "vpc_id":"vpc-0c76012669482aa8e",
          "ingress_rules_cidr_blocks":[
             {
                "from_port":389,
@@ -162,12 +162,12 @@
          {
             "name":"aws-ldap-prd-nlb",
             "security_group_ids":[
-               "sg-0b5c53f7b040c14d4"
+               "sg-08244142c0400e86e"
             ],
             "subnet_ids":[
-               "subnet-03a35bac22ae11b1c",
-               "subnet-0cbcb44f0f98d75d1",
-               "subnet-02959396670f60ff4"
+               "subnet-023ce49ef44ce6ef5",
+               "subnet-0ae8f0ee56ef30f0a",
+               "subnet-0826f0a3e9731f101"
             ],
             "load_balancer_type":"network",
             "ip_address_type":"ipv4",
