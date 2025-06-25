@@ -1,133 +1,169 @@
 {
-    "ec2_instance_configuration": {
-      "ec2_instance_details": [
-        {
-          "name": "testmachines1",
-          "instance_type": "t2.medium",
-          "ami": "ami-0e449927258d45bc4",
-          "availability_zone": "us-east-1c",
-          "subnet_ids": "subnet-001847eac90898dff",
-          "volume_size": 20,
-          "volume_type": "gp3",
-          "delete_on_termination": false,
-          "disable_api_termination": true,
-          "instance_initiated_shutdown_behavior": "stop",
-          "monitoring": true,
-          "associate_public_ip_address": true,
-          "encrypted": true,
-          "key_name": "Key1",
-          "vpc_security_group_ids": ["sg-0e1378c3afb750da2"],
-          "tags": {
-            "Name": "testmachines1",
-            "aws-backup": "nobackup",
-            "Product": "core",
-            "Owner": "Arshad",
-            "type": "standalone"
-          }
-        },
-        {
-          "name": "testmachines2",
-          "instance_type": "t2.medium",
-          "ami": "ami-0e449927258d45bc4",
-          "availability_zone": "us-east-1c",
-          "subnet_ids": "subnet-001847eac90898dff",
-          "volume_size": 20,
-          "volume_type": "gp3",
-          "delete_on_termination": false,
-          "disable_api_termination": true,
-          "instance_initiated_shutdown_behavior": "stop",
-          "monitoring": true,
-          "associate_public_ip_address": true,
-          "encrypted": true,
-          "key_name": "Key1",
-          "vpc_security_group_ids": ["sg-0e1378c3afb750da2"],
-          "tags": {
-            "Name": "testmachines2",
-            "aws-backup": "nobackup",
-            "Product": "core",
-            "Owner": "manasa",
-            "type": "standalone"
-          }
-        },
+   "ec2_instance_configuration":{
+      "ec2_instance_details":[
          {
-          "name": "testmachines3",
-          "instance_type": "t2.medium",
-          "ami": "ami-0e449927258d45bc4",
-          "availability_zone": "us-east-1c",
-          "subnet_ids": "subnet-001847eac90898dff",
-          "volume_size": 20,
-          "volume_type": "gp3",
-          "delete_on_termination": false,
-          "disable_api_termination": true,
-          "instance_initiated_shutdown_behavior": "stop",
-          "monitoring": true,
-          "associate_public_ip_address": true,
-          "encrypted": true,
-          "key_name": "Key1",
-          "vpc_security_group_ids": ["sg-0e1378c3afb750da2"],
-          "tags": {
-            "Name": "testmachines2",
-            "aws-backup": "nobackup",
-            "Product": "core",
-            "Owner": "manasa",
-            "type": "standalone"
-          }
-        }
+            "name":"testmachines1",
+            "instance_type":"t2.medium",
+            "ami":"ami-0e449927258d45bc4",
+            "availability_zone":"us-east-1c",
+            "subnet_ids":"subnet-02959396670f60ff4",
+            "volume_size":20,
+            "volume_type":"gp3",
+            "delete_on_termination":false,
+            "disable_api_termination":true,
+            "instance_initiated_shutdown_behavior":"stop",
+            "monitoring":true,
+            "associate_public_ip_address":true,
+            "encrypted":true,
+            "key_name":"Key1",
+            "vpc_security_group_ids":[
+               "sg-0e1378c3afb750da2"
+            ],
+            "tags":{
+               "Name":"testmachines1",
+               "aws-backup":"nobackup",
+               "Product":"core",
+               "Owner":"Arshad",
+               "type":"standalone"
+            }
+         },
+         {
+            "name":"testmachines2",
+            "instance_type":"t2.medium",
+            "ami":"ami-0e449927258d45bc4",
+            "availability_zone":"us-east-1c",
+            "subnet_ids":"subnet-0cbcb44f0f98d75d1",
+            "volume_size":20,
+            "volume_type":"gp3",
+            "delete_on_termination":false,
+            "disable_api_termination":true,
+            "instance_initiated_shutdown_behavior":"stop",
+            "monitoring":true,
+            "associate_public_ip_address":true,
+            "encrypted":true,
+            "key_name":"Key1",
+            "vpc_security_group_ids":[
+               "sg-0e1378c3afb750da2"
+            ],
+            "tags":{
+               "Name":"testmachines2",
+               "aws-backup":"nobackup",
+               "Product":"core",
+               "Owner":"manasa",
+               "type":"standalone"
+            }
+         },
+         {
+            "name":"testmachines3",
+            "instance_type":"t2.medium",
+            "ami":"ami-0e449927258d45bc4",
+            "availability_zone":"us-east-1c",
+            "subnet_ids":"subnet-0cbcb44f0f98d75d1",
+            "volume_size":20,
+            "volume_type":"gp3",
+            "delete_on_termination":false,
+            "disable_api_termination":true,
+            "instance_initiated_shutdown_behavior":"stop",
+            "monitoring":true,
+            "associate_public_ip_address":true,
+            "encrypted":true,
+            "key_name":"Key1",
+            "vpc_security_group_ids":[
+               "sg-0e1378c3afb750da2"
+            ],
+            "tags":{
+               "Name":"testmachines2",
+               "aws-backup":"nobackup",
+               "Product":"core",
+               "Owner":"manasa",
+               "type":"standalone"
+            }
+         }
       ]
-    },
-    
-    "security_group_config": [
+   },
+   "security_group_config":[
       {
-        "name": "web-sg",
-        "description": "Web SG",
-        "vpc_id": "vpc-0309d39c7f7cdc065",
-        "ingress_rules_cidr_blocks": [
-          {
-            "from_port": 80,
-            "to_port": 80,
-            "protocol": "tcp",
-            "cidr_blocks": ["10.0.0.0/16"],
-            "description": "Allow HTTP"
-          }
-        ],
-        "egress_rules": [
-          {
-            "from_port": 0,
-            "to_port": 0,
-            "protocol": -1,
-            "cidr_blocks": ["0.0.0.0/0"],
-            "description": "Allow all outbound"
-          }
-        ],
-        "tags": {
-          "Environment": "dev"
-        }
+         "name":"web-sg",
+         "description":"Web SG",
+         "vpc_id":"vpc-017b9b3c4ddfe0c53",
+         "ingress_rules_cidr_blocks":[
+            {
+               "from_port":80,
+               "to_port":80,
+               "protocol":"tcp",
+               "cidr_blocks":[
+                  "10.0.0.0/16"
+               ],
+               "description":"Allow HTTP"
+            }
+         ],
+         "egress_rules":[
+            {
+               "from_port":0,
+               "to_port":0,
+               "protocol":-1,
+               "cidr_blocks":[
+                  "0.0.0.0/0"
+               ],
+               "description":"Allow all outbound"
+            }
+         ],
+         "tags":{
+            "Environment":"dev"
+         }
       },
       {
-        "name": "ssh-sg",
-        "description": "SSH SG",
-        "vpc_id": "vpc-0309d39c7f7cdc065",
-        "ingress_rules_cidr_blocks": [
-          {
-            "from_port": 22,
-            "to_port": 22,
-            "protocol": "tcp",
-            "cidr_blocks": ["203.0.113.0/24"],
-            "description": "Allow SSH"
-          }
-        ],
-        "egress_rules": [
-          {
-            "from_port": 0,
-            "to_port": 0,
-            "protocol": -1,
-            "cidr_blocks": ["0.0.0.0/0"],
-            "description": "Allow all outbound"
-          }
-        ],
-        "tags": {
-          "Environment": "prod"
-        }
+         "name":"ssh-sg",
+         "description":"SSH SG",
+         "vpc_id":"vpc-017b9b3c4ddfe0c53",
+         "ingress_rules_cidr_blocks":[
+            {
+               "from_port":22,
+               "to_port":22,
+               "protocol":"tcp",
+               "cidr_blocks":[
+                  "203.0.113.0/24"
+               ],
+               "description":"Allow SSH"
+            }
+         ],
+         "egress_rules":[
+            {
+               "from_port":0,
+               "to_port":0,
+               "protocol":-1,
+               "cidr_blocks":[
+                  "0.0.0.0/0"
+               ],
+               "description":"Allow all outbound"
+            }
+         ],
+         "tags":{
+            "Environment":"prod"
+         }
       }
-    ]
-  }
+   ]{
+      "lb_configuration":{
+         "lb_details":[
+            {
+               "name":"jde-db-prod-ext-nlb",
+               "security_group_ids":[
+                  "sg-0857f7922b1b7d54a"
+               ],
+               "subnet_ids":[
+                  "subnet-03a35bac22ae11b1c",
+                  "subnet-0cbcb44f0f98d75d1",
+                  "subnet-02959396670f60ff4"
+               ],
+               "load_balancer_type":"network",
+               "ip_address_type":"ipv4",
+               "idle_timeout":60,
+               "internal":false,
+               "enable_http2":true,
+               "enable_deletion_protection":false,
+               "tags":{
+                  "Owner":"Ali Bhatti",
+                  "preserve_c7n_gc":"true"
+               }
+            }
+         }
