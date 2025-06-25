@@ -47,7 +47,7 @@ module "loadbalncer" {
 }
 #Target group resource calling
 module "target-group" {
-  source   = "./modules/target-group"
+  source   = "./module/target-group"
   for_each = { for tg in var.tg_configuration.tg_details : tg.name => tg }
   vpc_id   = each.value.vpc_id
   name     = each.key
