@@ -107,3 +107,34 @@ variable "tg_configuration" {
     tg_details = []
   }
 }
+variable "tg_configuration" {
+  description = "Configuration details for Target Groups."
+  type = object({
+    tg_details = list(object({
+      name                  = string
+      target_group_port     = number
+      target_group_protocol = string
+      vpc_id                = string
+      target_type           = string
+      stickiness_enabled    = bool
+      tags = object({
+        Owner = string
+      })
+      # THESE are the attributes made optional within the object type
+      health_check_enabled  = optional(bool)
+      health_check_interval = optional(number)
+      health_check_path     = optional(string)
+      health_check_protocol = optional(string)
+      health_check_timeout  = optional(number)
+      healthy_threshold     = optional(number)
+      unhealthy_threshold   = optional(number)
+      slow_start_duration   = optional(number) # Corrected typo if needed
+      stickiness_type       = optional(string)
+      cookie_duration       = optional(number)
+      cookie_name           = optional(string)
+      successCode_matcher   = optional(string)
+      lambda_multi_value_headers_enabled = optional(bool)
+      proxy_protocol_v2     = optional(bool)
+    }))
+  })
+}
