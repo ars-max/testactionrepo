@@ -57,7 +57,7 @@
                 "name": "testmachines3",
                 "instance_type": "t2.medium",
                 "ami": "ami-0e449927258d45bc4",
-                "availability_zone": "us-east-1c",
+                "availability_zone": "us-east-1d",
                 "subnet_ids": "subnet-0cbcb44f0f98d75d1",
                 "volume_size": 20,
                 "volume_type": "gp3",
