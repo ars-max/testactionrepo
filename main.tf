@@ -45,32 +45,41 @@ module "loadbalncer" {
   enable_deletion_protection = each.value.enable_deletion_protection
   tags                       = each.value.tags
 }
-#Target group resource calling
-module "target-group" {
+module "target_groups" { # It's good practice to pluralize the name for for_each modules
   source   = "./module/target-group"
   for_each = { for tg in var.tg_configuration.tg_details : tg.name => tg }
-  vpc_id   = each.value.vpc_id
-  name     = each.key
 
-  target_type                        = each.value.target_type
-  target_group_port                  = each.value.target_group_port
-  health_check_protocol              = each.value.health_check_protocol
-  health_check_interval              = each.value.health_check_interval
-  health_check_timeout               = each.value.health_check_timeout
-  healthy_threshold                  = each.value.healthy_threshold
-  unhealthy_threshold                = each.value.unhealthy_threshold
-  health_check_path                  = each.value.health_check_path
-  healthCheckEnabled                 = each.value.healthCheckEnabled
-  health_check_port                  = each.value.health_check_port
-  target_group_protocol              = each.value.target_group_protocol
-  cookie_duration                    = each.value.cookie_duration
-  deregistration_delay               = each.value.deregistration_delay
-  slow_start_duruation               = each.value.slow_start_duruation
-  stickiness_enabled                 = each.value.stickiness_enabled
-  stickiness_type                    = each.value.stickiness_type
-  successCode_matcher                = each.value.successCode_matcher
-  cookie_name                        = each.value.cookie_name
-  lambda_multi_value_headers_enabled = each.value.lambda_multi_value_headers_enabled
-  proxy_protocol_v2                  = each.value.proxy_protocol_v2
-  tags                               = each.value.tags
+  # Required attributes (always expected in var.json)
+  name                   = each.value.name
+  target_group_port      = each.value.target_group_port
+  target_group_protocol  = each.value.target_group_protocol
+  vpc_id                 = each.value.vpc_id
+  target_type            = each.value.target_type
+  stickiness_enabled     = each.value.stickiness_enabled # If this can also be optional in JSON, use try() here too
+
+  # Optional attributes - use try() to handle cases where they might be missing in var.json
+  # If the attribute is missing in each.value, 'try' will return null,
+  # allowing the 'default' value in the module's variable definition to take over.
+
+  health_check_enabled               = try(each.value.health_check_enabled, null)
+  health_check_interval              = try(each.value.health_check_interval, null)
+  health_check_path                  = try(each.value.health_check_path, null)
+  health_check_protocol              = try(each.value.health_check_protocol, null)
+  health_check_timeout               = try(each.value.health_check_timeout, null)
+  healthy_threshold                  = try(each.value.healthy_threshold, null)
+  unhealthy_threshold                = try(each.value.unhealthy_threshold, null)
+  health_check_port                  = try(each.value.health_check_port, null)
+  
+  deregistration_delay               = try(each.value.deregistration_delay, null)
+  slow_start_duration                = try(each.value.slow_start_duration, null) # Ensure spelling matches var.json and variables.tf
+  
+  stickiness_type                    = try(each.value.stickiness_type, null)
+  cookie_duration                    = try(each.value.cookie_duration, null)
+  cookie_name                        = try(each.value.cookie_name, null)
+  
+  successCode_matcher                = try(each.value.successCode_matcher, null)
+  lambda_multi_value_headers_enabled = try(each.value.lambda_multi_value_headers_enabled, null)
+  proxy_protocol_v2                  = try(each.value.proxy_protocol_v2, null)
+
+  tags = each.value.tags # Assuming tags are always present
 }
