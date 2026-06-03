@@ -6,7 +6,7 @@
             "instance_type":"t2.medium",
             "ami":"ami-0e449927258d45bc4",
             "availability_zone":"us-east-1a",
-            "subnet_ids":"subnet-0510be0f3aa0e819f",
+            "subnet_ids":"subnet-0ffda5a56cb03dbd5",
             "volume_size":20,
             "volume_type":"gp3",
             "delete_on_termination":false,
@@ -32,7 +32,7 @@
             "instance_type":"t2.medium",
             "ami":"ami-0e449927258d45bc4",
             "availability_zone":"us-east-1e",
-            "subnet_ids":"subnet-05b289d0d1420fb32",
+            "subnet_ids":"subnet-0ffda5a56cb03dbd5",
             "volume_size":20,
             "volume_type":"gp3",
             "delete_on_termination":false,
@@ -69,7 +69,7 @@
             "encrypted":true,
             "key_name":"Key1",
             "vpc_security_group_ids":[
-               "sg-0dbb694e66c4b845c"
+               "subnet-0ffda5a56cb03dbd5"
             ],
             "tags":{
                "Name":"testmachines2",
@@ -99,7 +99,7 @@
       {
          "name":"web-sg",
          "description":"Web SG",
-         "vpc_id":"vpc-0c9da96e7fe41249f",
+         "vpc_id":"vpc-0c40584c92cfb1e54",
          "ingress_rules_cidr_blocks":[
             {
                "from_port":80,
@@ -165,9 +165,9 @@
                "sg-0dbb694e66c4b845c"
             ],
             "subnet_ids":[
-               "subnet-0510be0f3aa0e819f",
-               "subnet-05b289d0d1420fb32",
-               "subnet-044d47563fbe03e1c"
+               "subnet-0ffda5a56cb03dbd5",
+               "subnet-0a319e9eda6b5d963",
+               "subnet-0b75963d0ad248424"
             ],
             "load_balancer_type":"network",
             "ip_address_type":"ipv4",
