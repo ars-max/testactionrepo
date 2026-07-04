@@ -6,7 +6,7 @@
             "instance_type":"t2.medium",
             "ami":"ami-0e449927258d45bc4",
             "availability_zone":"us-east-1a",
-            "subnet_ids":"subnet-0510be0f3aa0e819f",
+            "subnet_ids":"subnet-0e4d502e54c096142",
             "volume_size":20,
             "volume_type":"gp3",
             "delete_on_termination":false,
@@ -32,7 +32,7 @@
             "instance_type":"t2.medium",
             "ami":"ami-0e449927258d45bc4",
             "availability_zone":"us-east-1e",
-            "subnet_ids":"subnet-05b289d0d1420fb32",
+            "subnet_ids":"subnet-0e4d502e54c096142",
             "volume_size":20,
             "volume_type":"gp3",
             "delete_on_termination":false,
@@ -58,7 +58,7 @@
             "instance_type":"t2.medium",
             "ami":"ami-0e449927258d45bc4",
             "availability_zone":"us-east-1a",
-            "subnet_ids":"subnet-044d47563fbe03e1c",
+            "subnet_ids":"subnet-0e4d502e54c096142",
             "volume_size":20,
             "volume_type":"gp3",
             "delete_on_termination":false,
@@ -87,7 +87,7 @@
             "name":"nprd-tg-aws-ldap",
             "target_group_port":389,
             "target_group_protocol":"TCP",
-            "vpc_id":"vpc-0c9da96e7fe41249f",
+            "vpc_id":"vpc-00cf087e7f857fd3c",
             "target_type":"instance",
             "tags":{
                "Owner":"Arshad"
@@ -99,7 +99,7 @@
       {
          "name":"web-sg",
          "description":"Web SG",
-         "vpc_id":"vpc-0c9da96e7fe41249f",
+         "vpc_id":"vpc-00cf087e7f857fd3c",
          "ingress_rules_cidr_blocks":[
             {
                "from_port":80,
@@ -129,7 +129,7 @@
       {
          "name":"ldap-sg",
          "description":"SSH SG",
-         "vpc_id":"vpc-0c9da96e7fe41249f",
+         "vpc_id":"vpc-00cf087e7f857fd3c",
          "ingress_rules_cidr_blocks":[
             {
                "from_port":389,
